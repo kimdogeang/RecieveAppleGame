@@ -4,9 +4,32 @@ using UnityEngine;
 
 public class BascketController : MonoBehaviour
 {
+    GameObject director;
     // Start is called before the first frame update
- 
-    void Update()
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Apple")
+        {
+            this.director.GetComponent<GameDirector>().GetApple();
+        }
+        else
+        {
+            this.director.GetComponent<GameDirector>().GetBomb();
+
+        }
+        Destroy(other.gameObject);
+    
+}
+    void Start()
+    {
+        this.director = GameObject.Find("GameDirector");
+
+    }
+
+    
+
+
+        void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
@@ -20,16 +43,7 @@ public class BascketController : MonoBehaviour
 
             }
 
-
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log("ㅈ바았다!");?? 정전남
-        if (other.gameObject.tag == "Apple")
-        {
-            Debug.Log("Tag = Apple");
-        }
-        
-    }
+   
 } 

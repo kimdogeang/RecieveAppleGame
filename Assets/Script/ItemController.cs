@@ -5,7 +5,6 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     public float dropSpeed = -0.03f;
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -15,7 +14,7 @@ public class ItemController : MonoBehaviour
     void Update()
     {
         transform.Translate(0, this.dropSpeed, 0);
-        if ( transform.position.y < -0.1f )
+        if ( transform.position.y < -1.0f )
         {
             Destroy(gameObject);
         }
